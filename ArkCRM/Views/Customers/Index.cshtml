@@ -1,0 +1,41 @@
+﻿@model List<ArkCRM.Models.Customer>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Index</h3>
+
+<table class="table mb-5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer Name</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+            <th>Vat Number</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.Address</td>
+                <td>@customer.TelephoneNumber</td>
+                <td>@customer.ContactPersonEmail</td>
+                <td>@customer.VatNumber</td>
+                @* <td style="white-space:nowrap; width: 10px">
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@customer.Id">
+                        Edit
+                    </a>
+                    <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@customer.Id">
+                        Delete
+                    </a>
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>
