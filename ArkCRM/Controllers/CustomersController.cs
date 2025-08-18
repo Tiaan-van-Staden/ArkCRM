@@ -51,5 +51,22 @@ namespace ArkCRM.Controllers
             }
             return View(customer);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+            return View(customer);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null)
+            {
+                _context.Customers.Remove(customer);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
