@@ -3,8 +3,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Index</h3>
+<h1 class="mb-3">Index</h1>
 
+@if(Model == null)
+{
+    <p><em>Loading...</em></p>
+} else
+{
 <table class="table mb-5">
     <thead>
         <tr>
@@ -27,15 +32,16 @@
                 <td>@customer.TelephoneNumber</td>
                 <td>@customer.ContactPersonEmail</td>
                 <td>@customer.VatNumber</td>
-                @* <td style="white-space:nowrap; width: 10px">
+                <td style="white-space:nowrap; width: 10px">
                     <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@customer.Id">
                         Edit
                     </a>
-                    <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@customer.Id">
+                    @* <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@customer.Id">
                         Delete
-                    </a>
-                </td> *@
+                    </a> *@
+                </td>
             </tr>
         }
     </tbody>
 </table>
+}

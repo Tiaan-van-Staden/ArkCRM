@@ -23,5 +23,33 @@ namespace ArkCRM.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Id, Name, Address, TelephoneNumber, ContactPersonName, ContactPersonEmail, VatNumber")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Customers.Add(customer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(customer);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var customer = await _context.Customers.FirstOrDefaultAsync(x=>x.Id == id);
+            return View(customer);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Address, TelephoneNumber, ContactPersonName, ContactPersonEmail, VatNumber")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Customers.Update(customer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(customer);
+        }
     }
 }
