@@ -1,47 +1,67 @@
-﻿@model List<ArkCRM.Models.Customer>
+﻿@model PaginatedList<ArkCRM.Models.Customer>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1 class="mb-3">Index</h1>
 
-@if(Model == null)
+@if (Model == null)
 {
     <p><em>Loading...</em></p>
-} else
+}
+else
 {
-<table class="table mb-5">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Customer Name</th>
-            <th>Address</th>
-            <th>Contact Number</th>
-            <th>Email</th>
-            <th>Vat Number</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var customer in Model)
-        {
+    <table class="table mb-5">
+        <thead>
             <tr>
-                <td>@customer.Id</td>
-                <td>@customer.Name</td>
-                <td>@customer.Address</td>
-                <td>@customer.TelephoneNumber</td>
-                <td>@customer.ContactPersonEmail</td>
-                <td>@customer.VatNumber</td>
-                <td style="white-space:nowrap; width: 10px">
-                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@customer.Id">
-                        Edit
-                    </a>
-                    <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@customer.Id">
-                        Delete
-                    </a>
-                </td>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Vat Number</th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.TelephoneNumber</td>
+                    <td>@customer.ContactPersonEmail</td>
+                    <td>@customer.VatNumber</td>
+                    <td style="white-space:nowrap; width: 10px">
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@customer.Id">
+                            Edit
+                        </a>
+                        <a class="btn btn-primary btn-sm" asp-action="Delete" asp-route-id="@customer.Id">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pagination">
+                @if (Model.HasPreviousPage)
+                {
+                    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-default">
+                        Previous
+                    </a>
+                }
+                @if (Model.HasNextPage)
+                {
+                    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-default">
+                        Next
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
 }
