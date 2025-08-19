@@ -2,7 +2,98 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <!-- Main Content Row -->
+    <div class="row g-5 mb-5">
+        <!-- Project Column -->
+        <div class="col-md-6">
+            <!-- Hero Section -->
+            <div class="mb-5">
+                <h1 class="display-4 font-weight-bold mb-3">ArkCRM</h1>
+                <p class="lead text-muted">ArkCRM is a C# ASP.NET web app built as a technical assessment for ArkSoft, providing customer management with CRUD, validation, sorting, paging, and filtering.</p>
+            </div>
+
+            <!-- Project Description Section -->
+            <div class="card shadow-sm mb-5">
+                <div class="card-body">
+                    <h2 class="card-title">About This Project</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            This web app is a lightweight customer management system built with ASP.NET MVC and C#.
+                        </li>
+                        <li class="mb-3">
+                            It includes:
+                        </li>
+                        <li class="mb-3">
+                            - A customer list with pagination and search functionality.
+                        </li>
+                        <li class="mb-3">
+                            - A management page for adding, editing, and deleting records.
+                        </li>
+                        <li class="mb-3">
+                            - Validation to keep data clean and accurate (still in progress).
+                        </li>
+                        <li class="mb-3">
+                            - Data storage and querying with Entity Framework and LINQ.
+                        </li>
+                        <li>
+                            The main focus is keeping things simple, user-friendly, and written with clean coding practices in mind.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="d-grid gap-2">
+                <a class="btn btn-primary btn-lg" asp-controller="Customers" asp-action="Index">
+                    Start Exploring
+                </a>
+            </div>
+        </div>
+
+        <!-- Profile Column -->
+        <div class="col-md-6">
+            <!-- Profile Card -->
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <!-- Header Section -->
+                    <div class="row mb-4">
+                        <!-- Profile Picture -->
+                        <div class="col-auto">
+                            <img src="~/images/profile.jpg" alt="Your Profile Picture"
+                                 class="img-fluid border border-secondary"
+                                 width="150" height="150">
+                        </div>
+
+                        <!-- Name and Title -->
+                        <div class="col d-flex align-items-center justify-content-center">
+                            <div class="text-center">
+                                <h2>Tiaan van Staden</h2>
+                                <p class="text-muted">Software Developer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description Section -->
+                    <div class="description-section">
+                        <p class="text-muted">
+                            I am a passionate Information Technology enthusiast with 2.5 years of
+                            experience as a Front-End Developer. Recently graduated with a Bachelor's
+                            in Computing, majoring in Software Engineering. I have a strong interest in
+                            cloud technologies, front-end libraries, and web application development. In
+                            my spare time, I enjoy working on motorcycles, gardening, gaming, and
+                            staying active.
+                        </p>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-links mt-3">
+                        <!-- Replace links with your social media profiles -->
+                        <a href="https://github.com/Tiaan-van-Staden" class="btn btn-link px-3"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/tiaan-van-staden/" class="btn btn-link px-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
