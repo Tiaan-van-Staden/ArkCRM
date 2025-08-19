@@ -5,6 +5,19 @@
 
 <h1 class="mb-3">Index</h1>
 
+<p>
+    <a asp-action="Create">Create new Customer</a>
+</p>
+
+<div class="col-4 p-0 justify-content-end">
+    <form asp-controller="Customers" asp-action="Index">
+        <span class="btn-group">
+            <input class="form-control" type="text" name="SearchText" placeholder="Search Key"/>
+            <input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search"/>
+        </span>
+    </form>
+</div>
+
 @if (Model == null)
 {
     <p><em>Loading...</em></p>

@@ -13,19 +13,28 @@ namespace ArkCRM.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? pageNumber)
+        public async Task<IActionResult> Index(int? pageNumber, string? SearchText = "")
         {
             const int pageSize = 10;
-
+           
             var customers = _context.Customers
-                .OrderBy(c => c.Name);
+                .OrderBy(c => c.Id);
 
-            var paginatedCustomers = await PaginatedList<Customer>.CreateAsync(
-                customers.AsNoTracking(),
-                pageNumber ?? 1,
-                pageSize);
+            var indexResult = await PaginatedList<Customer>.CreateAsync(
+               customers.AsNoTracking(),
+               pageNumber ?? 1,
+               pageSize);
 
-            return View(paginatedCustomers);
+
+            if (SearchText != "" && SearchText != null)
+            {
+                indexResult = await PaginatedList<Customer>.CreateAsync(
+               _context.Customers.Where(p => p.Name.Contains(SearchText)).AsNoTracking(),
+               pageNumber ?? 1,
+               pageSize);
+            }         
+
+            return View(indexResult);
         }
 
         public IActionResult Create()
