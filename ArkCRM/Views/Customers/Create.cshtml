@@ -1,35 +1,73 @@
 ﻿@model ArkCRM.Models.Customer
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Customer";
 }
 
-<h3>Create a Customer</h3>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Create Customer</h3>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Back to List
+        </a>
+    </div>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label for="Name">Name</label>
-        <input type="text" class="form-control" asp-for="Name" />
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" asp-for="Name" placeholder="Name" />
+                            <label asp-for="Name">Name</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" asp-for="Address" placeholder="Address" />
+                            <label asp-for="Address">Address</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" asp-for="TelephoneNumber" placeholder="Telephone Number" />
+                            <label asp-for="TelephoneNumber">Telephone Number</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" asp-for="ContactPersonName" placeholder="Contact Person Name" />
+                            <label asp-for="ContactPersonName">Contact Person Name</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" asp-for="ContactPersonEmail" placeholder="Contact Person Email" />
+                            <label asp-for="ContactPersonEmail">Contact Person Email</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" asp-for="VatNumber" placeholder="VAT Number" />
+                            <label asp-for="VatNumber">VAT Number</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="fas fa-save me-1"></i> Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-times me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="Address">Address</label>
-        <input type="text" class="form-control" asp-for="Address" />
-    </div>
-    <div class="form-group">
-        <label for="TelephoneNumber">TelephoneNumber</label>
-        <input type="text" class="form-control" asp-for="TelephoneNumber" />
-    </div>
-    <div class="form-group">
-        <label for="ContactPersonName">ContactPersonName</label>
-        <input type="text" class="form-control" asp-for="ContactPersonName" />
-    </div>
-    <div class="form-group">
-        <label for="ContactPersonEmail">ContactPersonEmail</label>
-        <input type="text" class="form-control" asp-for="ContactPersonEmail" />
-    </div>
-    <div class="form-group">
-        <label for="VatNumber">VatNumber</label>
-        <input type="text" class="form-control" asp-for="VatNumber" />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
