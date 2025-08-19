@@ -4,16 +4,15 @@
 }
 
 <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- Heading row -->
+    <div class="d-flex align-items-center mb-3">
         <h1 class="mb-0">Customers</h1>
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="fas fa-plus me-2"></i>
-            Add New Customer
-        </a>
     </div>
 
-    <div class="mb-4 col-4 p-0 d-flex justify-content-end">
-        <form asp-controller="Customers" asp-action="Index" class="w-100">
+    <!-- Controls row -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- Search (left) -->
+        <form asp-controller="Customers" asp-action="Index" class="col-4">
             <div class="input-group">
                 <span class="input-group-text bg-light">
                     <i class="fas fa-search text-muted"></i>
@@ -24,8 +23,17 @@
                 </button>
             </div>
         </form>
+
+        <!-- Add button (right) -->
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>
+            Add New Customer
+        </a>
     </div>
-        <div class="row g-4">
+
+    <div class="row g-4">
+        @if (Model.Any())
+        {
             @foreach (var customer in Model)
             {
                 <div class="col-md-6">
@@ -60,23 +68,39 @@
                             </div>
 
                             <div class="d-flex justify-content-between mt-3">
-                            <div>
-                                <small class="text-muted">VAT:</small>
-                                <br>
-                                <strong>@customer.VatNumber</strong>
-                            </div>
+                                <div>
+                                    <small class="text-muted">VAT:</small>
+                                    <br>
+                                    <strong>@customer.VatNumber</strong>
+                                </div>
                                 <div>
                                     <small class="text-muted">ID:</small>
                                     <br>
                                     <strong>@customer.Id</strong>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             }
-        </div>
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-warning text-center shadow-sm" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    No customers found matching your search.
+                </div>
+                <div class="text-center mt-3">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        Go Back
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
 
         <nav class="mt-4 mb-lg-5">
             <ul class="pagination justify-content-center">
