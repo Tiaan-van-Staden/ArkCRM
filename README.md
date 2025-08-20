@@ -102,15 +102,6 @@ It provides customer CRUD, validation, sorting, paging, and filtering with **Ent
 
 ---
 
-## Screenshots
-
-- Add screenshots (optional) in `docs/` and reference them here:
-
-    ![Customer List](docs/screenshot-list.png)
-    ![Create/Edit Customer](docs/screenshot-edit.png)
-
----
-
 ## Troubleshooting
 
 - **Cannot connect to SQL Server**  
